@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Node.js入门 | LHY's blog</title><meta name="keywords" content="Node.js"><meta name="author" content="LHY"><meta name="copyright" content="LHY"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Node.js入门1.简介Node.js 是能够在服务器端运行 JavaScript 的开放源代码、跨平台运行环境，基于Google的V8引擎。如果我们使用 PHP 来编写后端的代码时，需要 Apache 或者 Nginx 的 HTTP 服务器，并配上 mod_php5 模块和 php-cgi。不过对 Node.js 来说，概念完全不一样了。使用 Node.js 时，我们不仅仅 在实现一个应用，同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js入门">
+<meta property="og:url" content="https://freak2000.github.io/2021/08/02/nodejs%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="LHY&#39;s blog">
+<meta property="og:description" content="Node.js入门1.简介Node.js 是能够在服务器端运行 JavaScript 的开放源代码、跨平台运行环境，基于Google的V8引擎。如果我们使用 PHP 来编写后端的代码时，需要 Apache 或者 Nginx 的 HTTP 服务器，并配上 mod_php5 模块和 php-cgi。不过对 Node.js 来说，概念完全不一样了。使用 Node.js 时，我们不仅仅 在实现一个应用，同">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://image.mamicode.com/info/201810/20181027214041074622.jpg">
+<meta property="article:published_time" content="2021-08-02T11:48:45.000Z">
+<meta property="article:modified_time" content="2021-08-02T13:19:35.562Z">
+<meta property="article:author" content="LHY">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://image.mamicode.com/info/201810/20181027214041074622.jpg"><link rel="shortcut icon" href="/./img/li.png"><link rel="canonical" href="https://freak2000.github.io/2021/08/02/nodejs%E5%85%A5%E9%97%A8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Node.js入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-08-02 21:19:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/2170473/pexels-photo-2170473.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LHY's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Node.js入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-08-02T11:48:45.000Z" title="发表于 2021-08-02 19:48:45">2021-08-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-08-02T13:19:35.562Z" title="更新于 2021-08-02 21:19:35">2021-08-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">知识笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Node.js入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Node-js入门"><a href="#Node-js入门" class="headerlink" title="Node.js入门"></a>Node.js入门</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>Node.js 是能够在服务器端运行 JavaScript 的开放源代码、跨平台运行环境，基于Google的V8引擎。<br>如果我们使用 PHP 来编写后端的代码时，需要 Apache 或者 Nginx 的 HTTP 服务器，并配上 mod_php5 模块和 php-cgi。不过对 Node.js 来说，概念完全不一样了。使用 Node.js 时，我们不仅仅 在实现一个应用，同时还实现了整个 HTTP 服务器。事实上，我们的 Web 应用以及对应的 Web 服务器基本上是一样的。</p>
+<p>Node.js安装地址及方法：<br>地址：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a><br>方法：<a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-install-setup.html">https://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
+<h2 id="2-npm"><a href="#2-npm" class="headerlink" title="2.npm"></a>2.npm</h2><h3 id="2-1-nmp使用"><a href="#2-1-nmp使用" class="headerlink" title="2.1 nmp使用"></a>2.1 nmp使用</h3><p>npm（全称 Node Package Manager，即“node包管理器”）是一个免费的模块分享社区，是Node.js默认的、用JavaScript编写的软件包管理系统，会随着Node.js一起安装，能解决NodeJS代码部署上的很多问题。<br>官网：<a target="_blank" rel="noopener" href="https://www.npmjs.com/">https://www.npmjs.com/</a><br>npm有windows系统的全局变量，在命令行输入<code>npm -v</code>可以查看到当前安装的npm版本。<br>可以用npm来引入第三方的模块，我在这里以命令行颜色输出的模块colors为例，这个模块可以使命令行里面的字的样式变成别的颜色，地址为<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/colors">https://www.npmjs.com/package/colors</a> ，里面有使用方法</p>
+<ul>
+<li>在命令行中进入到要安装模块的目录，输入命令<code>npm install colors</code><br>安装完成后会出现node_modules文件夹和package-lock.json两个东西<br><img src="/img/node1.png" alt="node1.png"></li>
+</ul>
+<p>node_modules里面有封装好了的模块文件。</p>
+<ul>
+<li>在这个目录下新建一个app.js文件<br><img src="/img/img.png" alt="img.png"></li>
+<li>在里面输入<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="built_in">require</span>(<span class="string">&#x27;colors&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>.green); <span class="comment">// outputs green text</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;i like cake and pies&#x27;</span>.underline.red) <span class="comment">// outputs red underlined text</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;inverse the color&#x27;</span>.inverse); <span class="comment">// inverses the color</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;OMG Rainbows!&#x27;</span>.rainbow); <span class="comment">// rainbow</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;Run the trap&#x27;</span>.trap); <span class="comment">// Drops the bass</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure></li>
+<li>保存之后在原来的命令行中输入<code>node app.js</code><br>可以看到效果：<br><img src="/img/img_1.png" alt="img_1.png"></li>
+</ul>
+<h3 id="2-2-npm身份证"><a href="#2-2-npm身份证" class="headerlink" title="2.2 npm身份证"></a>2.2 npm身份证</h3><p>我们从npm中下载的modules文件夹被称为‘依赖’，我们可以使用package.json去管理这些的‘依赖’。需要创建一个身份证，通常创建项目第一件事就是新建身份证。</p>
+<ul>
+<li>新建一个项目文件夹</li>
+<li>在命令行进入到响应的文件夹，输入命令<code>npm init</code></li>
+<li>接着输入表单信息，包括包名，描述，版本号，作者等信息，可以按需回答，也可以回车跳过<br><img src="/img/img_2.png" alt="img_2.png"></li>
+<li>填好后原来的文件夹之中会出现一个package.json文件，里面包含了身份证的信息</li>
+<li>再次以模块colors为例，在命令行输入命令<code>npm install --save colors</code>,package.json文件中就会出现模块的依赖项<br><img src="/img/img_3.png" alt="img_3.png"></li>
+</ul>
+<p>这样做的原因：node_modules中的模块之间都是相互影响的，如果引入的模块特别多，进行文件传输时，可能会造成非常的大的影响。而只传身份证，<br>在下一次安装模块使用时，只要在项目文件夹下输入命令<code>npm install</code>，npm就会检索存放在package.json里面的信息，安装所有依赖。</p>
+<h2 id="3-内置Node-js模块使用"><a href="#3-内置Node-js模块使用" class="headerlink" title="3.内置Node.js模块使用"></a>3.内置Node.js模块使用</h2><p>为了让Node.js的文件可以相互调用，Node.js提供了一个简单的模块系统。</p>
+<p>模块是Node.js 应用程序的基本组成部分，文件和模块是一一对应的。换言之，一个 Node.js 文件就是一个模块，这个文件可能是JavaScript 代码、JSON 或者编译过的C/C++ 扩展。<br>除了可以使用npm来使用第三方模块之外，Node.js还提供了许多内置模块，见<a target="_blank" rel="noopener" href="https://nodejs.org/docs/latest-v15.x/api/">https://nodejs.org/docs/latest-v15.x/api/</a><br>已文件系统模块fs为例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入http模块</span></span><br><span class="line"><span class="keyword">var</span> http= <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="comment">//引入fs模块</span></span><br><span class="line"><span class="keyword">var</span> fs =<span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="comment">//用node.js创建服务器</span></span><br><span class="line"><span class="keyword">var</span> server=http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.url);</span><br><span class="line">    <span class="comment">//更改http报文的头部，设置编码为utf8</span></span><br><span class="line">    res.setHeader(<span class="string">&quot;Content-Type&quot;</span>,<span class="string">&quot;text/html;charset=UTF8&quot;</span>)</span><br><span class="line">    <span class="comment">//自定义路由</span></span><br><span class="line">    <span class="keyword">if</span>(req.url===<span class="string">&quot;/xiao&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//用fs来读取模块</span></span><br><span class="line">        fs.readFile(<span class="string">&quot;./public/wen.txt&quot;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">            res.end(data)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        res.end(<span class="string">&quot;页面不存在&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//监听端口</span></span><br><span class="line">server.listen(<span class="number">6531</span>)</span><br></pre></td></tr></table></figure>
+<p>通过这种方式，可以建立一个服务器，设计路由，从而方便网页的访问</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">LHY</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://freak2000.github.io/2021/08/02/nodejs%E5%85%A5%E9%97%A8/">https://freak2000.github.io/2021/08/02/nodejs%E5%85%A5%E9%97%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://freak2000.github.io" target="_blank">LHY's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Node-js/">Node.js</a></div><div class="post_share"><div class="social-share" data-image="http://image.mamicode.com/info/201810/20181027214041074622.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/07/26/Vue%E7%BB%84%E4%BB%B6%E7%AE%80%E6%9E%90/"><img class="next-cover" src="https://img-blog.csdnimg.cn/img_convert/1f8b030418b2a0d1d40392438d6710ed.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vue组件简析</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">LHY</div><div class="author-info__description">存在先于本质</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/freak2000" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/weixin" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://steamcommunity.com/profiles/76561198984055183" target="_blank" title="Steam"><i class="fab fa-steam"></i></a><a class="social-icon" href="/haoyuli40@gmail.com" target="_blank" title="邮箱"><i class="fas fa-envelope-square"></i></a><a class="social-icon" href="https://space.bilibili.com/241756719" target="_blank" title="B站"><i class="fas fa-bold"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js%E5%85%A5%E9%97%A8"><span class="toc-text">Node.js入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="toc-text">1.简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-npm"><span class="toc-text">2.npm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-nmp%E4%BD%BF%E7%94%A8"><span class="toc-text">2.1 nmp使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-npm%E8%BA%AB%E4%BB%BD%E8%AF%81"><span class="toc-text">2.2 npm身份证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%86%85%E7%BD%AENode-js%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8"><span class="toc-text">3.内置Node.js模块使用</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/08/02/nodejs%E5%85%A5%E9%97%A8/" title="Node.js入门"><img src="http://image.mamicode.com/info/201810/20181027214041074622.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Node.js入门"/></a><div class="content"><a class="title" href="/2021/08/02/nodejs%E5%85%A5%E9%97%A8/" title="Node.js入门">Node.js入门</a><time datetime="2021-08-02T11:48:45.000Z" title="发表于 2021-08-02 19:48:45">2021-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/26/Vue%E7%BB%84%E4%BB%B6%E7%AE%80%E6%9E%90/" title="Vue组件简析"><img src="https://img-blog.csdnimg.cn/img_convert/1f8b030418b2a0d1d40392438d6710ed.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue组件简析"/></a><div class="content"><a class="title" href="/2021/07/26/Vue%E7%BB%84%E4%BB%B6%E7%AE%80%E6%9E%90/" title="Vue组件简析">Vue组件简析</a><time datetime="2021-07-26T11:48:45.000Z" title="发表于 2021-07-26 19:48:45">2021-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/21/hello-world/" title="Hello World"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2021/07/21/hello-world/" title="Hello World">Hello World</a><time datetime="2021-07-21T13:55:53.491Z" title="发表于 2021-07-21 21:55:53">2021-07-21</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% );"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By LHY</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
