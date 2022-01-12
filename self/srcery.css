@@ -1,0 +1,118 @@
+/*
+Theme: Srcery
+Description: Srcery dark color scheme for highlight.js
+Author: Chen Bin <chen.bin@gmail.com>
+Maintainer: @redguardtoo
+Website: https://srcery-colors.github.io/
+Date: 2021-04-13
+*/
+
+
+/* 新添加的内容
+  -------------------------------------
+  --hl-color                  代码框字体顔色 【必须】 (把下面.hljs的 color复製到这里来)
+  --hl-bg                     代码框背景色 【必须】 (把下面.hljs的 background复製到这里来)
+  --hltools-bg: #321a0f       代码框顶部工具栏背景色 【可选】(如果你关掉了 copy、lang 和 shrink,可不用配置这个）
+  --hltools-color: #fff       代码框顶部工具栏字体顔色 【可选】(如果你关掉了 copy、lang 和 shrink,可不用配置这个）
+  --hlnumber-bg: #221a0f      代码框行数背景色 【可选】(如果已经关掉 line_number,可以不用配置这个)
+  --hlnumber-color: #fff      代码框行数字体顔色 【可选】 (如果已经关掉 line_number,可以不用配置这个)
+  --hlscrollbar-bg: #d3af86   代码框滚动条顔色 【可选】（默认为主题主顔色）
+  --hlexpand-bg: #d3af86      代码框底部展开背景色 【可选】(如果已经关掉 highlight_height_limit,可以不用配置这个)
+*/
+
+:root {
+  --hl-color: #FCE8C3;
+  --hl-bg: #1C1B19;
+  --hltools-bg: #321a0f;
+  --hltools-color: #fff;
+  --hlnumber-bg: #1C1B19;
+  --hlnumber-color: #fff;
+  --hlscrollbar-bg: #FCE8C3;
+  --hlexpand-bg: #FCE8C3;
+}
+
+
+
+.hljs {
+  background: #1C1B19; /* Black */
+  color: #FCE8C3; /* Bright White */
+}
+
+/* Bright White */
+.hljs-subst,
+.hljs-quote,
+.hljs-literal {
+  color: #FCE8C3;
+}
+
+/* Bright Blue */
+.hljs-type,
+.hljs-symbol {
+  color: #68A8E4;
+}
+
+/* Red */
+.hljs-keyword,
+.hljs-deletion {
+  color: #EF2F27;
+}
+
+/* Yellow */
+.hljs-name,
+.hljs-function,
+.hljs-attribute,
+.hljs-selector-attr,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-section,
+.hljs-title {
+  color: #FBB829;
+}
+
+/* Cyan */
+.hljs-code,
+.hljs-variable,
+.hljs-property,
+.hljs-template-variable,
+.hljs-class {
+  color: #0AAEB3;
+}
+
+/* Bright Green */
+.hljs-string,
+.hljs-regexp,
+.hljs-bullet,
+.hljs-addition {
+  color: #98BC37;
+}
+
+/* Bright Magenta */
+.hljs-built_in,
+.hljs-params {
+  color: #FF5C8F;
+}
+
+/* Blue */
+.hljs-template-tag,
+.hljs-selector-tag {
+  color: #2C78BF;
+}
+
+/* Bright Black */
+.hljs-link,
+.hljs-number,
+.hljs-comment,
+.hljs-meta {
+  color: #918175;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* @see https://github.com/srcery-colors/srcery-emacs for reference */
